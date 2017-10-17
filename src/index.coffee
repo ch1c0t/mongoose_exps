@@ -8,4 +8,4 @@ app.get '/', (request, response) ->
     title: 'Some title'
     message: 'Some message.'
 
-app.listen 3000
+app.listen (process.env.PORT || 3000)
