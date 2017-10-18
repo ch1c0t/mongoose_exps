@@ -2,7 +2,7 @@ mongoose = require 'mongoose'
 express = require 'express'
 app = express()
 
-uri = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL || 'mongodb://localhost/for_mongoose'
+uri = 'mongodb://mongo:27017'
 port = process.env.PORT || 3000
 
 mongoose.connect uri, (error, response) ->
@@ -18,4 +18,4 @@ app.get '/', (request, response) ->
     title: 'Some title'
     message: 'Some message.'
 
-app.listen (process.env.PORT || 3000)
+app.listen port

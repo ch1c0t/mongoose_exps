@@ -1,5 +1,11 @@
-version: '3'
+version: '2'
 services:
   web:
     build: .
     command: node lib/index.js
+    ports:
+      - "127.0.0.1:3000:3000"
+    depends_on:
+      - mongo
+  mongo:
+    image: 'mongo'
