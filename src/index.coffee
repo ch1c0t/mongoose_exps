@@ -5,11 +5,12 @@ app = express()
 uri = process.env.DB_URI || 'mongodb://localhost/for_mongoose'
 port = process.env.PORT || 3000
 
-mongoose.connect uri, (error, response) ->
-  if error
-    console.log "An error occured while connecting to #{uri}: #{error}"
-  else
-    console.log "Successfully connected to #{uri}."
+mongoose.connect uri
+
+db = mongoose.connection
+db.on 'error', console.error.bind(console, 'connection error:')
+db.on 'open', ->
+  "Connected to #{uri}"
 
 app.set 'view engine', 'pug'
 
