@@ -2,7 +2,7 @@ mongoose = require 'mongoose'
 express = require 'express'
 app = express()
 
-uri = 'mongodb://mongo:27017'
+uri = process.env.DB_URI
 port = process.env.PORT || 3000
 
 mongoose.connect uri, (error, response) ->

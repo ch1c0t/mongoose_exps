@@ -5,6 +5,8 @@ services:
     command: node lib/index.js
     ports:
       - "127.0.0.1:3000:3000"
+    environment:
+      DB_URI: 'mongodb://mongo:27017'
     depends_on:
       - mongo
   mongo:
