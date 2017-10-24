@@ -14,9 +14,17 @@ db.on 'open', ->
 
 { Schema } = require 'mongoose'
 kittySchema = Schema name: String
+kittySchema.methods.speak = ->
+  greeting =
+    if @name
+      "Meow name is #{@name}."
+    else
+      "I don't have a name."
+
 Kitten = mongoose.model 'Kitten', kittySchema
 silence = new Kitten name: 'Silence'
 console.log silence.name
+console.log silence.speak()
 
 app.set 'view engine', 'pug'
 
